@@ -1,6 +1,6 @@
-// ´ëÀ¯Æò ÃàÁ¦ ÇÁ·ÎÁ§Æ®.
+// ëŒ€ìœ í‰ ì¶•ì œ í”„ë¡œì íŠ¸.
 
-var strImage = new Array(18);	//¿À¸®Áö³Î ÀÌ¹ÌÁöÆÄÀÏ¸í ¹è¿­ÁöÁ¤
+var strImage = new Array(18);	//ì˜¤ë¦¬ì§€ë„ ì´ë¯¸ì§€íŒŒì¼ëª… ë°°ì—´ì§€ì •
 strImage[0] = "/card0.gif";		strImage[1] = "/card1.gif";		strImage[2] = "/card2.gif";
 strImage[3] = "/card3.gif";		strImage[4] = "/card4.gif";		strImage[5] = "/card5.gif";
 strImage[6] = "/card6.gif";		strImage[7] = "/card7.gif";		strImage[8] = "/card8.gif";
@@ -12,10 +12,10 @@ var sImage1, sImage2;
 var blank = "/blank.gif";
 var buffer;
 
-var count = 0;	// ¸î¹ø Âï¾ú´ÂÁö ¾Ë·ÁÁÜ.
-var gameCount = 9; // Ä«µå¸¦ ¸î°³ ¸ÂÃß¾ú´ÂÁö ¾Ë·ÁÁÜ.
-var nScore = 0;	// Á¡¼ö
-var nLife = 3; // »ı¸í
+var count = 0;	// ëª‡ë²ˆ ì°ì—ˆëŠ”ì§€ ì•Œë ¤ì¤Œ.
+var gameCount = 9; // ì¹´ë“œë¥¼ ëª‡ê°œ ë§ì¶”ì—ˆëŠ”ì§€ ì•Œë ¤ì¤Œ.
+var nScore = 0;	// ì ìˆ˜
+var nLife = 3; // ìƒëª…
 var nTime = 10;
 var delayTime = 3;
 
@@ -29,13 +29,13 @@ function getPath( URL )
 
 var currentPath = getPath(self.location + "");
 
-//³­¼ö ¹ß»ı ÇÔ¼ö
+//ë‚œìˆ˜ ë°œìƒ í•¨ìˆ˜
 function rand(max)
 {
 	return Math.round((max - 1) * Math.random());
 }
 
-//·£´ıÇÏ°Ô ¹èÄ¡.. (Áßº¹ ¹®Á¦ ÀÖÀ½..)
+//ëœë¤í•˜ê²Œ ë°°ì¹˜.. (ì¤‘ë³µ ë¬¸ì œ ìˆìŒ..)
 function Randomize()
 {
 	var r, buffer;
@@ -56,7 +56,7 @@ function gameTimer()
 		document.myForm.time.value = --nTime;
 	else
 	{
-		if ( nLife == 0 )	//¶óÀÌÇÁ´Â ½Ã°£ÀÌ ´ÙµÉ¶§ °¨¼ÒÇÏµµ·Ï ÇÑ´Ù.
+		if ( nLife == 0 )	//ë¼ì´í”„ëŠ” ì‹œê°„ì´ ë‹¤ë ë•Œ ê°ì†Œí•˜ë„ë¡ í•œë‹¤.
 			GameOver( false );
 		else
 		{
@@ -82,7 +82,7 @@ function delay()
 	delayID = setTimeout( "delay();", 1000 );
 }
 
-//ÀÌ¹ÌÁö Å¬¸¯ÇÒ ¶§ ½ÇÇà
+//ì´ë¯¸ì§€ í´ë¦­í•  ë•Œ ì‹¤í–‰
 function clicked( index )
 {
 	if( document.images[index].src == currentPath + blank )
@@ -101,7 +101,7 @@ function clicked( index )
 			if ( sImage1 == sImage2 )
 			{
 				nTime = 10;
-				nScore += 500;	//¸ÂÃß´Â °³¼ö´ç 500Á¡..
+				nScore += 500;	//ë§ì¶”ëŠ” ê°œìˆ˜ë‹¹ 500ì ..
 				document.myForm.score.value = nScore;
 				if( --gameCount == 0 )
 					GameOver( true );
@@ -112,7 +112,7 @@ function clicked( index )
 				document.images[index].src = currentPath + blank;
 				document.images[buffer].src = currentPath + blank;
 //				document.myForm.life.value = --nLife;
-//				if ( nLife == 0 )	//¶óÀÌÇÁ´Â ½Ã°£ÀÌ ´ÙµÉ¶§ °¨¼ÒÇÏµµ·Ï ÇÑ´Ù.
+//				if ( nLife == 0 )	//ë¼ì´í”„ëŠ” ì‹œê°„ì´ ë‹¤ë ë•Œ ê°ì†Œí•˜ë„ë¡ í•œë‹¤.
 //					GameOver( false );
 			}
 		}
@@ -126,7 +126,7 @@ function GameOver( boolin )
 	clearTimeout( timerID );
 
 	nScore += nLife * 10;
-	nScore += nTime * 5; // bonusÁ¡¼ö
+	nScore += nTime * 5; // bonusì ìˆ˜
 
 	if ( boolin )
 	{
